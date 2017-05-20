@@ -23,7 +23,7 @@ public class PaymentChannelView implements ElementView {
 		
 		ctx.beginPath();
 		if(node1View.isSelected() || node2View.isSelected()) {
-			ctx.strokeStyle = union("rgb(150,50,50)");
+			ctx.strokeStyle = union("rgb(50,50,250)");
 			ctx.lineWidth = 4;
 		} else {
 			ctx.strokeStyle = union("rgb(100,100,200)");

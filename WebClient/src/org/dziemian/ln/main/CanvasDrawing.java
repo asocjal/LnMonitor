@@ -11,11 +11,13 @@ import static jsweet.util.StringTypes.mouseup;
 import org.dziemian.ln.data.LnNode;
 import org.dziemian.ln.data.PaymentChannel;
 import org.dziemian.ln.view.DrawCanvas;
+import org.dziemian.ln.view.ElementView;
 import org.dziemian.ln.view.ElementsToDraw;
 import org.dziemian.ln.view.LnNodeView;
 import org.dziemian.ln.view.PaymentChannelView;
 
 import jsweet.dom.HTMLCanvasElement;
+import jsweet.dom.MouseEvent;
 
 public class CanvasDrawing {
 	
@@ -31,16 +33,16 @@ public class CanvasDrawing {
 	public CanvasDrawing() {
 		alert("V12");
 		
-		for(int i=0; i<14; i++) {
+		for(int i=0; i<50; i++) {
 			LnNodeView nodeView = new LnNodeView(100+Math.random()*400, 100+Math.random()*400, new LnNode("Node Czarka"));
 			if(i == 5) {
-				nodeView.setSelected(true);
+//				nodeView.setSelected(true);
 			}
 			elementsToDraw.add(nodeView);
 		}
 		
 		int size = elementsToDraw.getSize();
-		for(int i=0; i<12; i++) {
+		for(int i=0; i<100; i++) {
 			LnNodeView nodeView1 = (LnNodeView)elementsToDraw.get((int)(Math.random()*size));
 			LnNodeView nodeView2 = (LnNodeView)elementsToDraw.get((int)(Math.random()*size));
 			if(nodeView1!= nodeView2) {
@@ -74,12 +76,36 @@ public class CanvasDrawing {
 		}, true);
 		canvasElement.addEventListener(mouseup, event -> {
 			console.info("Mouse up");
+			onMouseUp(event);
 			return null;
 		}, true);
 		
 		
 		
 		onFrame();
+	}
+	
+	public void onMouseUp(MouseEvent event) {
+		event.preventDefault();
+		console.info("Looking for node. Coordinates are: " + event.layerX + " and " + event.layerY);
+		for(ElementView el: elementsToDraw.getList()) {
+			if(el instanceof LnNodeView) {
+				LnNodeView lnNode = (LnNodeView)el;
+				lnNode.setSelected(false);
+				if(     (lnNode.getX() > event.layerX - 10) &&
+						(lnNode.getX() < event.layerX + 10) &&
+						(lnNode.getY() > event.layerY - 10) &&
+						(lnNode.getY() < event.layerY + 10) ) {
+					console.info("Selecting node");
+					lnNode.setSelected(true);
+				}
+			}
+		}
+//		if (this.area.finished) {
+//			this.initGame();
+//			this.startGame();
+//		}
+//		this.area.onInputDeviceUp(event, false);
 	}
 	
 	private void animateFrame() {

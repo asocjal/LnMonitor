@@ -18,8 +18,8 @@ public class LnNodeView implements ElementView {
 	private final LnNode node;
 	
 	public LnNodeView(double x, double y, LnNode node) {
-		dirx = (Math.random()-0.5)/4;
-		diry = (Math.random()-0.5)/4;
+		dirx = (Math.random()-0.5);///4;
+		diry = (Math.random()-0.5);///4;
 		this.x = x;
 		this.y = y;
 		this.node = node;
@@ -53,10 +53,10 @@ public class LnNodeView implements ElementView {
 		ctx.beginPath();
 		
 		if(selected == true) {
-			ctx.fillStyle = union("rgb(100,100,200)");
+			ctx.fillStyle = union("rgb(50,50,250)");
 			ctx.arc(x, y, radius*2, 0,2*Math.PI);
 		} else {
-			ctx.fillStyle = union("rgb(150,150,250)");
+			ctx.fillStyle = union("rgb(100,100,200)");
 			ctx.arc(x, y, radius, 0,2*Math.PI);
 		}
 		

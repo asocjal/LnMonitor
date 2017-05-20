@@ -24,5 +24,9 @@ public class ElementsToDraw {
 	public ElementView get(int index) {
 		return elements.get(index);
 	}
+	
+	public List<ElementView> getList() {
+		return elements;
+	}
 
 }
