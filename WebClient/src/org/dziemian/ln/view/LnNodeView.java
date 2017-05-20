@@ -18,8 +18,8 @@ public class LnNodeView implements ElementView {
 	private final LnNode node;
 	
 	public LnNodeView(double x, double y, LnNode node) {
-		dirx = (Math.random()-0.5);///4;
-		diry = (Math.random()-0.5);///4;
+//		dirx = (Math.random()-0.5);///4;
+//		diry = (Math.random()-0.5);///4;
 		this.x = x;
 		this.y = y;
 		this.node = node;
@@ -36,6 +36,14 @@ public class LnNodeView implements ElementView {
 	
 	public double getY() {
 		return y;
+	}
+	
+	public void setDirX(double dirX) {
+		this.dirx = dirX;
+	}
+	
+	public void setDirY(double dirY) {
+		this.diry = dirY;
 	}
 
 	public void draw(DrawCanvas drawCanvas) {
