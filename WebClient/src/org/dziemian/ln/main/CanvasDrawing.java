@@ -17,7 +17,6 @@ import org.dziemian.ln.view.LnNodeView;
 import org.dziemian.ln.view.PaymentChannelView;
 import org.dziemian.ln.view.PositionAdapter;
 
-import jsweet.dom.Event;
 import jsweet.dom.HTMLCanvasElement;
 import jsweet.dom.MouseEvent;
 import jsweet.dom.WebSocket;
